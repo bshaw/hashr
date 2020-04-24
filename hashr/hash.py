@@ -1,15 +1,10 @@
-from flask import Flask, jsonify, request
 import hashlib
+from flask import Blueprint, jsonify, request
 
-app = Flask(__name__)
+bp = Blueprint('hash', __name__, url_prefix='/hash')
 
-
-@app.route('/hash/<hash_algorithm>/<hash_data>', methods=['GET'])
+@bp.route('/<hash_algorithm>/<hash_data>', methods=['GET'])
 def caclulate_hash(hash_algorithm, hash_data):
     hash = hashlib.new(hash_algorithm)
     hash.update(hash_data.encode('utf8'))
     return jsonify({'data': hash.hexdigest()})
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
