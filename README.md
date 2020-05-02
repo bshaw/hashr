@@ -2,6 +2,20 @@
 
 Provides a simple RESTful API for calculating the hash value for a given input.
 
+## Setup
+
+Setup the virtual environment, install dependencies, and start the dev server:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+
+pip3 install -r requirements.txt
+pip install -e .
+
+FLASK_APP=hashr flask run
+```
+
 ## Usage
 
 Send an HTTP GET request containing the desired hash algorithm and string to hash as arguments:
